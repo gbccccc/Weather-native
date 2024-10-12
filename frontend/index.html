@@ -17,28 +17,52 @@
 
 <html>
 <head>
-  <title>Datastore and Firebase Auth Example</title>
+  <title>Weather Search</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
   <script src="./scripts/script.js"></script>
   <link type="text/css" rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-<div class="form">
-
-</div>
-<div class="result">
-  <div class="result-card">
-
+<div class="main">
+  <div class="input-section roboto-regular">
+    <div class="input-section-header">
+      <h3>Weather Search</h3>
+      <p>Fill out the form to get weather info !</p>
+    </div>
+    <form class="input-form">
+      <label for="street">Street</label><br/>
+      <input id="street" type="text" name="street"/><br/>
+      <span class="half-div">
+        <label for="city">City</label><br/>
+        <input id="city" type="text" name="city"/>
+      </span>
+      <span class="half-div">
+        <label for="state">State</label><br/>
+        <select id="state" name="city">
+          <!--filled after loading-->
+        </select>
+      </span>
+    </form>
   </div>
-  <div class="result-table">
+  <div class="result">
+    <div class="result-card">
 
+    </div>
+    <div class="result-table">
+
+    </div>
   </div>
-</div>
-<div class="detail">
-  <div class="detail-card">
+  <div class="detail">
+    <div class="detail-card">
 
-  </div>
-  <div class="detail-chart">
+    </div>
+    <div class="detail-chart">
 
+    </div>
   </div>
 </div>
 </body>

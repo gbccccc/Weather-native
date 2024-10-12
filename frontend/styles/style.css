@@ -13,8 +13,70 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+:root {
+    --screen-width: 1280px;
+    --input-section-width: 400px;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 body {
-    font-family: "helvetica", sans-serif;
-    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    width: var(--screen-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-section {
+    width: var(--input-section-width);
+}
+
+.input-section-header {
+    width: var(--input-section-width);
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+    background-image: url("../images/banner.jpg");
+    background-position: 0 -55px;
+    background-size: 230%;
+    font-size: 0.9em;
+    color: #484646;
+}
+
+.input-section-header p, .input-section-header h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.input-form {
+    width: var(--input-section-width);
+    padding: 10px 20px;
+}
+
+.input-form label {
+    color: #4564a3;
+    font-size: 0.75em;
+    line-height: 30px;
+}
+
+.input-form input, .input-form select {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.half-div {
+    display: inline-block;
+    width: 47%;
+}
+
+.half-div:not(:last-child) {
+    margin-right: 20px;
 }
