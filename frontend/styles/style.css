@@ -27,6 +27,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #e1e1e1;
 }
 
 .main {
@@ -38,11 +39,12 @@ body {
 
 .input-section {
     width: var(--input-section-width);
+    background-color: white;
 }
 
 .input-section-header {
-    width: var(--input-section-width);
-    padding: 10px 20px 10px 20px;
+    width: calc(var(--input-section-width) - 40px);
+    padding: 10px 20px;
     text-align: left;
     background-image: url("../images/banner.jpg");
     background-position: 0 -55px;
@@ -57,7 +59,7 @@ body {
 }
 
 .input-form {
-    width: var(--input-section-width);
+    width: calc(var(--input-section-width) - 40px);
     padding: 10px 20px;
 }
 
@@ -69,14 +71,63 @@ body {
 
 .input-form input, .input-form select {
     box-sizing: border-box;
-    width: 100%;
+    width: calc(100% - 20px);
+}
+
+.input-form input {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 0;
+    border-color: #c5c1c1;
 }
 
 .half-div {
     display: inline-block;
-    width: 47%;
+    width: 49%;
+    margin-bottom: 10px;
 }
 
-.half-div:not(:last-child) {
-    margin-right: 20px;
+.select-holder {
+    display: none;
+}
+
+.input-form hr {
+    color: #c5c0c0;
+    margin-bottom: 5px;
+}
+
+.input-form input.auto-detect-checkbox {
+    width: 10px;
+    margin: 0;
+}
+
+.input-form input.submit-button, .input-form input.reset-button {
+    width: 70px;
+    height: 30px;
+    margin-top: 15px;
+    border-radius: 0;
+    border-bottom-width: 3px;
+    color: white;
+    font-size: 0.7em;
+    font-weight: 100;
+}
+
+.input-form input.submit-button {
+    background-color: #4564a3;
+    border-color: #355086;
+}
+
+.input-form input.submit-button:hover {
+    background-color: #5471a4;
+    border-color: #445d86;
+}
+
+.input-form input.reset-button {
+    background-color: #fdad05;
+    border-color: #fd7505;
+}
+
+.input-form input.reset-button:hover {
+    background-color: #ffba36;
+    border-color: #ff8f34;
 }

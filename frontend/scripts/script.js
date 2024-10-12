@@ -54,10 +54,9 @@ stateMapping = {
 window.onload = init
 
 function init() {
-  let stateOptions = "";
+  let stateSelection = document.getElementById("state")
   for (let stateAbbr in stateMapping) {
-    stateOptions += "<option value=" + stateAbbr + ">" + stateMapping[stateAbbr] + "</option>";
+    let option = new Option(stateMapping[stateAbbr], stateAbbr)
+    stateSelection.appendChild(option)
   }
-  console.log(document.getElementById("state"))
-  document.getElementById("state").innerHTML = stateOptions
 }
