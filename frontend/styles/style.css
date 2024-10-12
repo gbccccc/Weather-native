@@ -69,6 +69,10 @@ body {
     line-height: 30px;
 }
 
+.requied-mark {
+    color: #cc0f0f;
+}
+
 .input-form input, .input-form select {
     box-sizing: border-box;
     width: calc(100% - 20px);

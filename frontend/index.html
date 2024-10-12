@@ -35,15 +35,15 @@
     </div>
     <form class="input-form">
       <div>
-        <label for="street">Street</label><br/>
-        <input id="street" type="text" name="street"/><br/>
+        <label for="street">Street <span class="requied-mark">*</span></label><br/>
+        <input id="street" required type="text" name="street"/><br/>
         <span class="half-div">
-          <label for="city">City</label><br/>
-          <input id="city" type="text" name="city"/>
+          <label for="city">City <span class="requied-mark">*</span></label><br/>
+          <input id="city" required type="text" name="city"/>
         </span>
         <span class="half-div">
-          <label for="state">State</label><br/>
-          <select id="state" name="city" >
+          <label for="state">State <span class="requied-mark">*</span></label><br/>
+          <select id="state" required name="city" >
             <option class="select-holder" value="">Select Your State</option>
             <!--filled after loading-->
           </select>
