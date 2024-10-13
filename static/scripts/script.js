@@ -1,5 +1,7 @@
 window.onload = init
 
+const googleApiKey = "AIzaSyAG1FPkDpKn_pC2Kr9-hgNzodkHb9hyY8E"
+
 function init() {
     let stateSelection = document.getElementById("state")
     for (let stateAbbr in stateMapping) {
@@ -16,22 +18,32 @@ function submitAddress() {
         let addressForm = document.getElementById("address-form")
         if (addressForm.reportValidity()) {
             let formData = new FormData(document.getElementById("address-form"))
-            let searchParam = new URLSearchParams();
+            let addressArray = []
             for (let entry of formData.entries()) {
-                searchParam.set(entry[0], entry[1])
+                addressArray.push(entry[1].replaceAll(" ", "+"))
             }
-            let xhr = new XMLHttpRequest();
-            xhr.open("GET", "/weather?" + searchParam.toString());
-            xhr.onload = showDetail
-            xhr.send();
+            let addressStr = addressArray.join()
+            console.log(addressStr)
+            let xhrGeocoding = new XMLHttpRequest()
+            xhrGeocoding.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address="
+                + addressStr + "&key=" + googleApiKey)
+            xhrGeocoding.onload = (event) => {
+                let responseJson = JSON.parse(event.target.response)
+                let location = responseJson.results[0].geometry.location
+                // let xhrTomorrow = new XMLHttpRequest();
+                // xhrTomorrow.open("GET", "/weather?" + searchParam.toString());
+                // xhrTomorrow.onload = (event) => showDetail(event.target.response,)
+                // xhrTomorrow.send();
+            }
+            xhrGeocoding.send()
         } else {
             console.log("false")
         }
     }
 }
 
-function showDetail(event) {
-    console.log(event.target.response)
+function showDetail(response, address) {
+    console.log()
 }
 
 const stateMapping = {
