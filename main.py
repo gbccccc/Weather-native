@@ -2,7 +2,7 @@ import datetime
 import json
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -15,6 +15,14 @@ def root():
 @app.get("/hello")
 def hello_world():
     return json.JSONEncoder().encode({"message": "hello world!"})
+
+
+@app.get("/weather")
+def weather():
+    print(request.args["street"])
+    print(request.args["city"])
+    print(request.args["state"])
+    return json.JSONEncoder().encode({"message": "received"})
 
 
 if __name__ == "__main__":

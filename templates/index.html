@@ -17,62 +17,62 @@
 
 <html>
 <head>
-    <title>Weather Search</title>
+  <title>Weather Search</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+  <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
 </head>
 <body>
 <div class="main">
-    <div class="input-section roboto-regular">
-        <div class="input-section-header">
-            <h3>Weather Search</h3>
-            <p>Fill out the form to get weather info !</p>
-        </div>
-        <form class="input-form" id="address-form" action="">
-            <div>
-                <label for="street">Street <span class="requied-mark">*</span></label><br/>
-                <input id="street" required type="text" name="street"/><br/>
-                <span class="half-div">
+  <div class="input-section roboto-regular">
+    <div class="input-section-header">
+      <h3>Weather Search</h3>
+      <p>Fill out the form to get weather info !</p>
+    </div>
+    <form class="address-form" id="address-form" action="/weather" method="get">
+      <div>
+        <label for="street">Street <span class="requied-mark">*</span></label><br/>
+        <input id="street" required type="text" name="street"/><br/>
+        <span class="half-div">
           <label for="city">City <span class="requied-mark">*</span></label><br/>
           <input id="city" required type="text" name="city"/>
         </span>
-                <span class="half-div">
+        <span class="half-div">
           <label for="state">State <span class="requied-mark">*</span></label><br/>
-          <select id="state" required name="city">
+          <select id="state" required name="state">
             <option class="select-holder" value="">Select Your State</option>
-              <!--filled after loading-->
+            <!--filled after loading-->
           </select>
         </span>
-            </div>
-            <hr/>
-            <label for="auto-detect">Want us to auto-detect your location? Check here</label>
-            <input class="auto-detect-checkbox" id="auto-detect" type="checkbox" name="auto-detect"/>
-            <br/>
-            <button class="submit-button" type="button" onclick="submitAddress()">SUBMIT</button>
-            <input class="reset-button" type="reset" value="CLEAR"/>
-        </form>
+      </div>
+      <hr/>
+      <label for="auto-detect">Want us to auto-detect your location? Check here</label>
+      <input class="auto-detect-checkbox" id="auto-detect" type="checkbox" name="auto-detect"/>
+      <br/>
+      <button class="submit-button" type="button" onclick="submitAddress()">SUBMIT</button>
+      <input class="reset-button" type="reset" value="CLEAR"/>
+    </form>
+  </div>
+  <div class="result">
+    <div class="result-card">
+
     </div>
-    <div class="result">
-        <div class="result-card">
+    <div class="result-table">
 
-        </div>
-        <div class="result-table">
-
-        </div>
     </div>
-    <div class="detail">
-        <div class="detail-card">
+  </div>
+  <div class="detail">
+    <div class="detail-card">
 
-        </div>
-        <div class="detail-chart">
-
-        </div>
     </div>
+    <div class="detail-chart">
+
+    </div>
+  </div>
 </div>
 </body>
 </html>

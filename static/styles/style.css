@@ -58,12 +58,12 @@ body {
     margin-bottom: 10px;
 }
 
-.input-form {
+.address-form {
     width: calc(var(--input-section-width) - 40px);
     padding: 10px 20px;
 }
 
-.input-form label {
+.address-form label {
     color: #4564a3;
     font-size: 0.75em;
     line-height: 30px;
@@ -73,12 +73,12 @@ body {
     color: #cc0f0f;
 }
 
-.input-form input, .input-form select {
+.address-form input, .address-form select {
     box-sizing: border-box;
     width: calc(100% - 20px);
 }
 
-.input-form input {
+.address-form input {
     border-width: 1px;
     border-style: solid;
     border-radius: 0;
@@ -95,17 +95,17 @@ body {
     display: none;
 }
 
-.input-form hr {
+.address-form hr {
     color: #c5c0c0;
     margin-bottom: 5px;
 }
 
-.input-form input.auto-detect-checkbox {
+.address-form input.auto-detect-checkbox {
     width: 10px;
     margin: 0;
 }
 
-.input-form button.submit-button, .input-form input.reset-button {
+.address-form button.submit-button, .address-form input.reset-button {
     width: 70px;
     height: 30px;
     margin-top: 15px;
@@ -117,22 +117,22 @@ body {
     font-weight: 100;
 }
 
-.input-form button.submit-button {
+.address-form button.submit-button {
     background-color: #4564a3;
     border-color: #355086;
 }
 
-.input-form button.submit-button:hover {
+.address-form button.submit-button:hover {
     background-color: #5471a4;
     border-color: #445d86;
 }
 
-.input-form input.reset-button {
+.address-form input.reset-button {
     background-color: #fdad05;
     border-color: #fd7505;
 }
 
-.input-form input.reset-button:hover {
+.address-form input.reset-button:hover {
     background-color: #ffba36;
     border-color: #ff8f34;
 }
