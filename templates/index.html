@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+ Copyright 2021 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+<head>
+    <title>Weather Search</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+</head>
+<body>
+<div class="main">
+    <div class="input-section roboto-regular">
+        <div class="input-section-header">
+            <h3>Weather Search</h3>
+            <p>Fill out the form to get weather info !</p>
+        </div>
+        <form class="input-form" id="address-form" action="">
+            <div>
+                <label for="street">Street <span class="requied-mark">*</span></label><br/>
+                <input id="street" required type="text" name="street"/><br/>
+                <span class="half-div">
+          <label for="city">City <span class="requied-mark">*</span></label><br/>
+          <input id="city" required type="text" name="city"/>
+        </span>
+                <span class="half-div">
+          <label for="state">State <span class="requied-mark">*</span></label><br/>
+          <select id="state" required name="city">
+            <option class="select-holder" value="">Select Your State</option>
+              <!--filled after loading-->
+          </select>
+        </span>
+            </div>
+            <hr/>
+            <label for="auto-detect">Want us to auto-detect your location? Check here</label>
+            <input class="auto-detect-checkbox" id="auto-detect" type="checkbox" name="auto-detect"/>
+            <br/>
+            <button class="submit-button" type="button" onclick="submitAddress()">SUBMIT</button>
+            <input class="reset-button" type="reset" value="CLEAR"/>
+        </form>
+    </div>
+    <div class="result">
+        <div class="result-card">
+
+        </div>
+        <div class="result-table">
+
+        </div>
+    </div>
+    <div class="detail">
+        <div class="detail-card">
+
+        </div>
+        <div class="detail-chart">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -105,23 +105,24 @@ body {
     margin: 0;
 }
 
-.input-form input.submit-button, .input-form input.reset-button {
+.input-form button.submit-button, .input-form input.reset-button {
     width: 70px;
     height: 30px;
     margin-top: 15px;
     border-radius: 0;
+    border-width: 1px;
     border-bottom-width: 3px;
     color: white;
     font-size: 0.7em;
     font-weight: 100;
 }
 
-.input-form input.submit-button {
+.input-form button.submit-button {
     background-color: #4564a3;
     border-color: #355086;
 }
 
-.input-form input.submit-button:hover {
+.input-form button.submit-button:hover {
     background-color: #5471a4;
     border-color: #445d86;
 }

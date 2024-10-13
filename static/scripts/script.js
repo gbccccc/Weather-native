@@ -60,3 +60,7 @@ function init() {
     stateSelection.appendChild(option)
   }
 }
+
+function submitAddress() {
+  console.log("submitting!")
+}
