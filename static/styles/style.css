@@ -138,13 +138,14 @@ body {
     margin: 20px auto;
     padding: 10px 20px;
     color: #8d8787;
+    box-shadow: -1px 1px 3px 0 #696969;
 }
 
 .result-card:hover {
-    box-shadow: -1px 1px 5px 0 #696969;
+    box-shadow: -1px 1px 6px 0 #696969;
 }
 
-.card-address {
+#card-address {
     font-size: 1.5em;
 }
 
