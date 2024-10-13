@@ -21,11 +21,8 @@ function submitAddress() {
                 searchParam.set(entry[0], entry[1])
             }
             let xhr = new XMLHttpRequest();
-            console.log(searchParam.toString())
             xhr.open("GET", "/weather?" + searchParam.toString());
-            xhr.onload = function (event) {
-                console.log(event.target.response)
-            };
+            xhr.onload = showDetail
             xhr.send();
         } else {
             console.log("false")
@@ -33,7 +30,11 @@ function submitAddress() {
     }
 }
 
-var stateMapping = {
+function showDetail(event) {
+    console.log(event.target.response)
+}
+
+const stateMapping = {
     "AL": "Alabama",
     "AK": "Alaska",
     "AZ": "Arizona",
@@ -84,4 +85,4 @@ var stateMapping = {
     "WV": "West Virginia",
     "WI": "Wisconsin",
     "WY": "Wyoming"
-}
+};
