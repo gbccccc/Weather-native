@@ -47,7 +47,7 @@
   </div>
   <div class="result">
     <div class="result-card roboto-regular">
-      <span class="card-address roboto-light">Long Beach, California</span><br/>
+      <span id="card-address" class="roboto-light">Long Beach, California</span><br/>
       <img id="card-weather-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
            alt="mostly_clear_day"/>
       <span class="card-temperature-text roboto-light"><span id="card-temperature">68</span>&deg;</span><br/>
@@ -81,7 +81,7 @@
           <td>
             <img class="card-stats-icon" src="{{ url_for("static", filename="images/Cloud_Cover.png") }}"
                  alt="Cloud_Cover.png"/>
-            </td>
+          </td>
           <td>
             <img class="card-stats-icon" src="{{ url_for("static", filename="images/UV_Level.png") }}"
                  alt="UV_Level.png"/>
