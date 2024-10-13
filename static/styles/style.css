@@ -61,6 +61,7 @@ body {
 .address-form {
     width: calc(var(--input-section-width) - 40px);
     padding: 10px 20px;
+    vertical-align: middle
 }
 
 .address-form label {
@@ -103,6 +104,7 @@ body {
 .address-form input.auto-detect-checkbox {
     width: 10px;
     margin: 0;
+    vertical-align: middle
 }
 
 .address-form button.submit-button, .address-form input.reset-button {

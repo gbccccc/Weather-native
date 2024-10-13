@@ -35,8 +35,10 @@
     </div>
     <form class="address-form" id="address-form" action="/weather" method="get">
       <div>
-        <label for="street">Street <span class="requied-mark">*</span></label><br/>
-        <input id="street" required type="text" name="street"/><br/>
+        <span>
+          <label for="street">Street <span class="requied-mark">*</span></label><br/>
+          <input id="street" required type="text" name="street"/><br/>
+        </span>
         <span class="half-div">
           <label for="city">City <span class="requied-mark">*</span></label><br/>
           <input id="city" required type="text" name="city"/>
@@ -50,8 +52,10 @@
         </span>
       </div>
       <hr/>
-      <label for="auto-detect">Want us to auto-detect your location? Check here</label>
-      <input class="auto-detect-checkbox" id="auto-detect" type="checkbox" name="auto-detect"/>
+      <span>
+        <label for="auto-detect">Want us to auto-detect your location? Check here</label>
+        <input class="auto-detect-checkbox" id="auto-detect" type="checkbox" name="auto-detect"/>
+      </span>
       <br/>
       <button class="submit-button" type="button" onclick="submitAddress()">SUBMIT</button>
       <input class="reset-button" type="reset" value="CLEAR"/>
