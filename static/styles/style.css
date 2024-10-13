@@ -3,6 +3,12 @@
     --input-section-width: 400px;
 }
 
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
 .roboto-regular {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
@@ -17,13 +23,14 @@ body {
 
 .main {
     width: var(--screen-width);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
 }
 
 .input-section {
     width: var(--input-section-width);
+    margin: 0 auto;
     background-color: white;
 }
 
@@ -122,4 +129,45 @@ body {
 .address-form input.reset-button:hover {
     background-color: #ffba36;
     border-color: #ff8f34;
+}
+
+.result-card {
+    background-color: white;
+    width: 580px;
+    height: 300px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    color: #8d8787;
+}
+
+.card-address {
+    font-size: 1.5em;
+}
+
+#card-weather-icon {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+}
+
+.card-temperature-text {
+    font-size: 6em;
+    margin-left: 200px;
+}
+
+#card-weather {
+    margin-left: 10px;
+}
+
+.cloud-stats-table {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    border-spacing: 10px;
+}
+
+.card-stats-icon {
+    width: 30px;
+    height: 30px;
 }

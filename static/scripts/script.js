@@ -23,27 +23,27 @@ function submitAddress() {
                 addressArray.push(entry[1].replaceAll(" ", "+"))
             }
             let addressStr = addressArray.join()
-            console.log(addressStr)
+
             let xhrGeocoding = new XMLHttpRequest()
             xhrGeocoding.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address="
                 + addressStr + "&key=" + googleApiKey)
             xhrGeocoding.onload = (event) => {
                 let responseJson = JSON.parse(event.target.response)
                 let location = responseJson.results[0].geometry.location
-                // let xhrTomorrow = new XMLHttpRequest();
-                // xhrTomorrow.open("GET", "/weather?" + searchParam.toString());
-                // xhrTomorrow.onload = (event) => showDetail(event.target.response,)
-                // xhrTomorrow.send();
+                let xhrTomorrow = new XMLHttpRequest();
+                xhrTomorrow.open("GET", "/weather?lat=" + location.lat + "&lng=" + location.lng);
+                xhrTomorrow.onload = (event) =>
+                    showDetail(event.target.response, responseJson.results[0].formatted_address)
+                xhrTomorrow.send();
             }
             xhrGeocoding.send()
-        } else {
-            console.log("false")
         }
     }
 }
 
 function showDetail(response, address) {
-    console.log()
+    console.log(response)
+    console.log(address)
 }
 
 const stateMapping = {

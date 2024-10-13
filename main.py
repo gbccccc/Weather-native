@@ -19,9 +19,8 @@ def hello_world():
 
 @app.get("/weather")
 def weather():
-    print(request.args["street"])
-    print(request.args["city"])
-    print(request.args["state"])
+    print(request.args["lat"])
+    print(request.args["lng"])
     return json.JSONEncoder().encode({"message": "received"})
 
 

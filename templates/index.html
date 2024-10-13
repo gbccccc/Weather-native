@@ -5,7 +5,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
 
   <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
@@ -15,7 +15,7 @@
   <div class="input-section roboto-regular">
     <div class="input-section-header">
       <h3>Weather Search</h3>
-      <p>Fill out the form to get weather info !</p>
+      <p>Fill out the form to get weather info!</p>
     </div>
     <form class="address-form" id="address-form" action="/weather" method="get">
       <div>
@@ -46,8 +46,56 @@
     </form>
   </div>
   <div class="result">
-    <div class="result-card">
-
+    <div class="result-card roboto-regular">
+      <span class="card-address roboto-light">Long Beach, California</span><br/>
+      <img id="card-weather-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
+           alt="mostly_clear_day"/>
+      <span class="card-temperature-text roboto-light"><span id="card-temperature">68</span>&deg;</span><br/>
+      <span id="card-weather">Mostly Clear</span>
+      <table class="cloud-stats-table">
+        <tr>
+          <td>Humidity</td>
+          <td>Pressure</td>
+          <td>Wind Speed</td>
+          <td>Visibility</td>
+          <td>Cloud Cover</td>
+          <td>UV Level</td>
+        </tr>
+        <tr>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/humidity.png") }}"
+                 alt="humidity.png"/>
+          </td>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/Pressure.png") }}"
+                 alt="Pressure.png"/>
+          </td>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/Wind_Speed.png") }}"
+                 alt="Wind_Speed.png"/>
+          </td>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/Visibility.png") }}"
+                 alt="Visibility.png"/>
+          </td>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/Cloud_Cover.png") }}"
+                 alt="Cloud_Cover.png"/>
+            </td>
+          <td>
+            <img class="card-stats-icon" src="{{ url_for("static", filename="images/UV_Level.png") }}"
+                 alt="UV_Level.png"/>
+          </td>
+        </tr>
+        <tr>
+          <td><span id="card-humidity">74</span>%</td>
+          <td><span id="card-pressure">29.73</span>inHg</td>
+          <td><span id="card-wind-speed">7.41</span>mph</td>
+          <td><span id="card-visibility">9.94</span>mi</td>
+          <td><span id="card-cloud-cover">16</span>%</td>
+          <td><span id="card-uv-level">0</span></td>
+        </tr>
+      </table>
     </div>
     <div class="result-table">
 
