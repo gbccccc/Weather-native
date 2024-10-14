@@ -19,10 +19,10 @@
     </div>
     <form class="address-form" id="address-form" action="/weather" method="get">
       <div>
-        <span>
+        <div>
           <label for="street">Street <span class="requied-mark">*</span></label><br/>
-          <input id="street" required type="text" name="street"/><br/>
-        </span>
+          <input id="street" required type="text" name="street"/>
+        </div>
         <span class="half-div">
           <label for="city">City <span class="requied-mark">*</span></label><br/>
           <input id="city" required type="text" name="city"/>
@@ -47,11 +47,11 @@
   </div>
   <div class="result">
     <div class="result-card roboto-regular">
-      <span id="card-address" class="roboto-light">Long Beach, California</span><br/>
+      <div id="card-address" class="roboto-light">Long Beach, California</div>
       <img id="card-weather-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
            alt="mostly_clear_day.svg"/>
       <span class="card-temperature-text roboto-light"><span id="card-temperature">68</span>&deg;</span><br/>
-      <span id="card-weather">Mostly Clear</span>
+      <div id="card-weather">Mostly Clear</div>
       <table class="cloud-stats-table">
         <tr>
           <td>Humidity</td>
@@ -108,7 +108,8 @@
       <tr class="result-table-row">
         <td>Wednesday, 11 Sep 2024</td>
         <td>
-          <img class="table-status-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
+          <img class="table-status-icon"
+               src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
                alt="mostly_clear_day.svg"/> Mostly Clear
         </td>
         <td>80.83</td>
@@ -117,13 +118,21 @@
       </tr>
     </table>
   </div>
-  <div class="detail">
-    <div class="detail-card">
-
+  <div class="detail roboto-light">
+    <div class="detail-title">Daily Weather Details</div>
+    <div class="detail-card roboto-regular">
+      <div class="detail-chart">
+        <div id="detail-date" class="detail-upper">Wednesday, 11 Sep 2024</div>
+        <div id="detail-status" class="detail-upper">Clear</div>
+        <div class="detail-temp-range detail-upper">
+          <span id="detail-temp-highest">80.83</span>&deg;F/<span id="detail-temp-highest">59</span>&deg;F
+        </div>
+        <img id="detail-status-icon" src="{{ url_for("static", filename="images/weather-symbols/clear_day.svg") }}"
+             alt="clear_day.svg"/>
+      </div>
     </div>
-    <div class="detail-chart">
-
-    </div>
+    <div class="detail-title">Weather Charts</div>
+    <button></button>
   </div>
 </div>
 </body>

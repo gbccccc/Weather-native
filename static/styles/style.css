@@ -207,3 +207,36 @@ body {
     height: 50px;
     vertical-align: middle;
 }
+
+.detail-title {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 2em;
+}
+
+.detail-card {
+    position: relative;
+    background: linear-gradient(to bottom, white 0%, #344971 100%);
+    width: 370px;
+    height: 290px;
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+
+.detail-upper {
+    margin-top: 13px;
+    font-size: 1.2em;
+    color: #344971;
+}
+
+.detail-temp-range {
+    font-size: 1.6em;
+}
+
+#detail-status-icon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 140px;
+    height: 140px;
+}
