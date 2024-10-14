@@ -129,6 +129,20 @@
         </div>
         <img id="detail-status-icon" src="{{ url_for("static", filename="images/weather-symbols/clear_day.svg") }}"
              alt="clear_day.svg"/>
+        <div class="detail-stats-div">
+          <span class="detail-stats-label">Precipitation:</span>
+          <span class="detail-stats"><span id="detail-precipitation">N/A</span></span><br/>
+          <span class="detail-stats-label">Chance of Rain:</span>
+          <span class="detail-stats"><span id="detail-rain-chance">0</span>%</span><br/>
+          <span class="detail-stats-label">Wind Speed:</span>
+          <span class="detail-stats"><span id="detail-wind-speed">9.65</span>mph</span><br/>
+          <span class="detail-stats-label">Humidity:</span>
+          <span class="detail-stats"><span id="detail-humidity">85.91</span>%</span><br/>
+          <span class="detail-stats-label">Visibility:</span>
+          <span class="detail-stats"><span id="detail-visibility">9.94</span>mi</span><br/>
+          <span class="detail-stats-label">Sunrise/Sunset:</span>
+          <span class="detail-stats"><span id="detail-sunrise">1</span>PM/<span id="detail-sunset">2</span>AM</span><br/>
+        </div>
       </div>
     </div>
     <div class="detail-title">Weather Charts</div>

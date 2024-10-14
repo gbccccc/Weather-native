@@ -240,3 +240,19 @@ body {
     width: 140px;
     height: 140px;
 }
+
+.detail-stats-div {
+    color: white;
+    margin-top: 20px;
+}
+
+.detail-stats-label {
+    display: inline-block;
+    text-align: right;
+    width: 200px;
+    margin-top: 5px;
+}
+
+.detail-stats {
+    font-size: 1.1em;
+}
