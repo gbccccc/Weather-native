@@ -97,9 +97,25 @@
         </tr>
       </table>
     </div>
-    <div class="result-table">
-
-    </div>
+    <table class="result-table roboto-regular">
+      <tr class="result-table-header">
+        <td class="table-date">Date</td>
+        <td class="table-status">Status</td>
+        <td>Temp High</td>
+        <td>Temp Low</td>
+        <td>Wind Speed</td>
+      </tr>
+      <tr class="result-table-row">
+        <td>Wednesday, 11 Sep 2024</td>
+        <td>
+          <img class="table-status-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
+               alt="mostly_clear_day"/> Mostly Clear
+        </td>
+        <td>80.83</td>
+        <td>59</td>
+        <td>9.79</td>
+      </tr>
+    </table>
   </div>
   <div class="detail">
     <div class="detail-card">

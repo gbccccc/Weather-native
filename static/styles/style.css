@@ -152,13 +152,13 @@ body {
 #card-weather-icon {
     width: 100px;
     height: 100px;
-    margin-top: 20px;
-    margin-bottom: -20px;
+    vertical-align: middle;
 }
 
 .card-temperature-text {
     font-size: 6em;
     margin-left: 200px;
+    vertical-align: middle;
 }
 
 #card-weather {
@@ -175,4 +175,35 @@ body {
 .card-stats-icon {
     width: 30px;
     height: 30px;
+}
+
+.result-table {
+    text-align: center;
+    width: 1000px;
+    margin: 20px auto;
+    border-spacing: 0 5px;
+}
+
+.result-table-header {
+    background-color: #4564a3;
+    height: 40px;
+}
+
+.table-date {
+    width: 25%;
+}
+
+.table-status {
+    width: 20%;
+}
+
+.result-table-row {
+    background-color: white;
+    height: 80px;
+}
+
+.table-status-icon {
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
 }
