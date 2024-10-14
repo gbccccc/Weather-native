@@ -131,6 +131,10 @@ body {
     border-color: #ff8f34;
 }
 
+#result-section {
+    display: none;
+}
+
 .result-card {
     background-color: white;
     width: 580px;

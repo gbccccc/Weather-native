@@ -45,7 +45,7 @@
       <input class="reset-button" type="reset" value="CLEAR"/>
     </form>
   </div>
-  <div class="result">
+  <div id="result-section">
     <div class="result-card roboto-regular">
       <div id="card-address" class="roboto-light">Long Beach, California</div>
       <img id="card-weather-icon" src="{{ url_for("static", filename="images/weather-symbols/mostly_clear_day.svg") }}"
@@ -118,7 +118,7 @@
       </tr>
     </table>
   </div>
-  <div class="detail roboto-light">
+  <div id="detail-section" class="roboto-light">
     <div class="detail-title">Daily Weather Details</div>
     <div class="detail-card roboto-regular">
       <div class="detail-chart">
@@ -141,7 +141,8 @@
           <span class="detail-stats-label">Visibility:</span>
           <span class="detail-stats"><span id="detail-visibility">9.94</span>mi</span><br/>
           <span class="detail-stats-label">Sunrise/Sunset:</span>
-          <span class="detail-stats"><span id="detail-sunrise">1</span>PM/<span id="detail-sunset">2</span>AM</span><br/>
+          <span class="detail-stats"><span id="detail-sunrise">1</span>PM/<span
+                  id="detail-sunset">2</span>AM</span><br/>
         </div>
       </div>
     </div>

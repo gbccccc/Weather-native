@@ -1,6 +1,5 @@
-import datetime
 import json
-import os
+import requests
 
 from flask import Flask, render_template, request
 
@@ -21,7 +20,28 @@ def hello_world():
 def weather():
     print(request.args["lat"])
     print(request.args["lng"])
-    return json.JSONEncoder().encode({"message": "received"})
+    headers = {
+        "accept": "application/json",
+        "Accept-Encoding": "gzip"
+    }
+
+    url = "https://api.tomorrow.io/v4/timelines?location=" + request.args["lat"] + ", " + request.args["lng"] + \
+          "&fields=temperature&fields=windSpeed&fields=humidity&fields=pressureSeaLevel&fields=uvIndex&fields" \
+          "=weatherCode&fields=visibility&fields=cloudCover&fields=&units=metric&timesteps=current&timezone=America" \
+          "%2FLos_Angeles&apikey=0H4oNBZe7IJKfOGHp3AcaYRirN7aYsxS"
+    response = requests.get(url, headers=headers)
+    currentResult = json.JSONDecoder().decode(response.text)
+
+    url = "https://api.tomorrow.io/v4/timelines?location=" + request.args["lat"] + ", " + request.args["lng"] + \
+          "&fields=temperatureMin&fields=temperatureMax&fields=windSpeed&fields=humidity" \
+          "&fields=weatherCode&fields=precipitationProbability&fields=precipitationType&fields" \
+          "=sunriseTime&fields=sunsetTime&fields=visibility&units=imperial&timesteps" \
+          "=1d&startTime=now&endTime=nowPlus5d&timezone=America%2FLos_Angeles&apikey" \
+          "=0H4oNBZe7IJKfOGHp3AcaYRirN7aYsxS"
+    response = requests.get(url, headers=headers)
+    forecastResult = json.JSONDecoder().decode(response.text)
+
+    return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult})
 
 
 if __name__ == "__main__":
