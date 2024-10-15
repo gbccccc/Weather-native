@@ -269,3 +269,17 @@ body {
 .detail-stats {
     font-size: 1.1em;
 }
+
+#no-record-section {
+    display: none;
+    background-color: white;
+    width: var(--input-section-width);
+    height: 30px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.no-record-info {
+    line-height: 30px;
+    display: block;
+}

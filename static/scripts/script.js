@@ -12,9 +12,14 @@ function init() {
   }
 }
 
-function onclear() {
+function clear() {
   document.getElementById("result-section").style.display = "none"
   document.getElementById("detail-section").style.display = "none"
+  document.getElementById("no-record-section").style.display = "none"
+}
+
+function noResult() {
+  document.getElementById("no-record-section").style.display = "block"
 }
 
 function submitAddress() {
@@ -36,6 +41,12 @@ function submitAddress() {
         + addressStr + "&key=" + googleApiKey)
       xhrGeocoding.onload = (event) => {
         let responseJson = JSON.parse(event.target.response)
+        if (responseJson.results.length === 0) {
+          clear()
+          noResult()
+          return
+        }
+
         let location = responseJson.results[0].geometry.location
         let xhrTomorrow = new XMLHttpRequest();
         xhrTomorrow.open("GET", `/weather?lat=${location.lat}&lng=${location.lng}`);
@@ -49,6 +60,8 @@ function submitAddress() {
 }
 
 function handleWeatherStats(response, address) {
+  document.getElementById("detail-section").style.display = "none"
+  document.getElementById("no-record-section").style.display = "none"
   document.getElementById("result-section").style.display = "none"
   let responseJson = JSON.parse(response)
   displayCurrentWeather(responseJson.current, address)
