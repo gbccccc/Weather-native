@@ -12,7 +12,7 @@ function init() {
   }
 }
 
-function clear() {
+function onClear() {
   document.getElementById("result-section").style.display = "none"
   document.getElementById("detail-section").style.display = "none"
   document.getElementById("no-record-section").style.display = "none"
@@ -42,7 +42,7 @@ function submitAddress() {
       xhrGeocoding.onload = (event) => {
         let responseJson = JSON.parse(event.target.response)
         if (responseJson.results.length === 0) {
-          clear()
+          onClear()
           noResult()
           return
         }
@@ -60,9 +60,7 @@ function submitAddress() {
 }
 
 function handleWeatherStats(response, address) {
-  document.getElementById("detail-section").style.display = "none"
-  document.getElementById("no-record-section").style.display = "none"
-  document.getElementById("result-section").style.display = "none"
+  onClear()
   let responseJson = JSON.parse(response)
   displayCurrentWeather(responseJson.current, address)
   displayForecastWeather(responseJson.forecast)
