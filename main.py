@@ -1,14 +1,14 @@
 import json
 import requests
 
-from flask import Flask, render_template, request
+from flask import Flask, send_from_directory, request
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def root():
-    return render_template("index.html")
+    return app.send_static_file("index.html")
 
 
 @app.get("/hello")
