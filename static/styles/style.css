@@ -314,4 +314,5 @@ body {
 
 #weather-charts {
     display: none;
+    margin: 10px auto;
 }

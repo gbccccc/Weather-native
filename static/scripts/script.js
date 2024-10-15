@@ -17,6 +17,7 @@ function onClear() {
   document.getElementById("result-section").style.display = "none"
   document.getElementById("detail-section").style.display = "none"
   document.getElementById("no-record-section").style.display = "none"
+  hideCharts()
 }
 
 function noResult() {
@@ -186,14 +187,24 @@ function displayDetail(forecastIndex) {
   document.getElementById("detail-section").style.display = "block"
 }
 
-function displayOrHideCharts() {
+function onClickChartsButton() {
   if (document.getElementById("display-charts-button").className === "hiding-charts") {
-    document.getElementById("weather-charts").style.display = "block"
-    document.getElementById("display-charts-button").className = "showing-charts"
+    displayCharts()
   } else {
-    document.getElementById("weather-charts").style.display = "none"
-    document.getElementById("display-charts-button").className = "hiding-charts"
+    hideCharts()
   }
+}
+
+function displayCharts() {
+  document.getElementById("weather-charts").style.display = "block"
+  document.getElementById("display-charts-button").className = "showing-charts"
+
+}
+
+function hideCharts() {
+  document.getElementById("weather-charts").style.display = "none"
+  document.getElementById("display-charts-button").className = "hiding-charts"
+
 }
 
 const stateMapping = {
