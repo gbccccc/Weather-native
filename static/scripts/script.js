@@ -12,6 +12,11 @@ function init() {
   }
 }
 
+function onclear() {
+  document.getElementById("result-section").style.display = "none"
+  document.getElementById("detail-section").style.display = "none"
+}
+
 function submitAddress() {
   let autoDetection = document.getElementById("auto-detect").checked
   if (autoDetection) {
@@ -85,7 +90,7 @@ function displayForecastWeather(forecastWeather) {
     let tableRow = document.createElement("tr")
 
     tableRow.setAttribute("class", "result-table-row")
-    tableRow.setAttribute("onclick", `showDetails(${i})`)
+    tableRow.setAttribute("onclick", `displayDetail(${i})`)
 
     let tableData = document.createElement("td")
     tableData.innerText = formatDate(new Date(forecast.startTime))
@@ -129,7 +134,9 @@ function formatTime(date) {
   return `${hour}:${date.getMinutes()}${ampm}`
 }
 
-function showDetails(forecastIndex) {
+function displayDetail(forecastIndex) {
+  document.getElementById("detail-section").style.display = "none"
+
   let forecast = forecasts[forecastIndex]
   document.getElementById("detail-date").innerText = formatDate(new Date(forecast.startTime))
   document.getElementById("detail-status").innerText = weatherMapping[forecast.values.weatherCode].description
@@ -146,6 +153,8 @@ function showDetails(forecastIndex) {
   document.getElementById("detail-visibility").innerText = forecast.values.visibility
   document.getElementById("detail-sunrise").innerText = formatTime(new Date(forecast.values.sunriseTime))
   document.getElementById("detail-sunset").innerText = formatTime(new Date(forecast.values.sunsetTime))
+
+  document.getElementById("detail-section").style.display = "block"
 }
 
 const stateMapping = {

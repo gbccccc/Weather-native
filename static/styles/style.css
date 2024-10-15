@@ -217,6 +217,10 @@ body {
     margin-right: 10px;
 }
 
+#detail-section {
+    display: none;
+}
+
 .detail-title {
     margin: 20px auto;
     text-align: center;
