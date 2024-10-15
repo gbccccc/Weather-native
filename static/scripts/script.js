@@ -80,10 +80,13 @@ function displayForecastWeather(forecastWeather) {
     tableChildren[1].remove()
   }
 
-  for (let forecast of forecasts) {
+  for (let i = 0; i < forecasts.length; i++) {
+    let forecast = forecasts[i]
     let tableRow = document.createElement("tr")
 
     tableRow.setAttribute("class", "result-table-row")
+    tableRow.setAttribute("onclick", `showDetails(${i})`)
+
     let tableData = document.createElement("td")
     let date = new Date(forecast.startTime)
     tableData.innerText = formatDate(date)
@@ -117,6 +120,10 @@ function displayForecastWeather(forecastWeather) {
 
 function formatDate(date) {
   return `${weekdayNames[date.getDay()]}, ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
+}
+
+function showDetails(forecastIndex) {
+  console.log(forecastIndex)
 }
 
 const stateMapping = {
