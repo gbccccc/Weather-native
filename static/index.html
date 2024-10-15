@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Weather Search</title>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -147,7 +148,10 @@
       </div>
     </div>
     <div class="detail-title">Weather Charts</div>
-    <button></button>
+    <button id="display-charts-button" class="hiding-charts" onclick="displayOrHideCharts()"></button>
+    <div id="weather-charts">
+      filling charts
+    </div>
   </div>
   <div id="no-record-section" class="roboto-regular">
     <span class="no-record-info">No records have been found.</span>

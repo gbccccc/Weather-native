@@ -186,6 +186,16 @@ function displayDetail(forecastIndex) {
   document.getElementById("detail-section").style.display = "block"
 }
 
+function displayOrHideCharts() {
+  if (document.getElementById("display-charts-button").className === "hiding-charts") {
+    document.getElementById("weather-charts").style.display = "block"
+    document.getElementById("display-charts-button").className = "showing-charts"
+  } else {
+    document.getElementById("weather-charts").style.display = "none"
+    document.getElementById("display-charts-button").className = "hiding-charts"
+  }
+}
+
 const stateMapping = {
   "AL": "Alabama",
   "AK": "Alaska",

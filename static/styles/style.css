@@ -38,7 +38,7 @@ body {
     width: calc(var(--input-section-width) - 40px);
     padding: 10px 20px;
     text-align: left;
-    background-image: url("../images/banner.jpg");
+    background-image: url("/static/images/banner.jpg");
     background-position: 0 -55px;
     background-size: 230%;
     font-size: 0.9em;
@@ -282,4 +282,36 @@ body {
 .no-record-info {
     line-height: 30px;
     display: block;
+}
+
+#display-charts-button.hiding-charts {
+    display: block;
+    width: 50px;
+    height: 30px;
+    background-image: url("/static/images/point-down-512.png");
+    background-size: cover;
+    background-position: center;
+    background-color: #e1e1e1;
+    margin: 10px auto;
+    border: 0;
+}
+
+#display-charts-button.showing-charts {
+    display: block;
+    width: 50px;
+    height: 30px;
+    background-image: url("/static/images/point-up-512.png");
+    background-size: cover;
+    background-position: center;
+    background-color: #e1e1e1;
+    margin: 10px auto;
+    border: 0;
+}
+
+#display-charts-button:hover {
+    cursor: pointer;
+}
+
+#weather-charts {
+    display: none;
 }
