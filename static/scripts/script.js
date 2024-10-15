@@ -88,8 +88,7 @@ function displayForecastWeather(forecastWeather) {
     tableRow.setAttribute("onclick", `showDetails(${i})`)
 
     let tableData = document.createElement("td")
-    let date = new Date(forecast.startTime)
-    tableData.innerText = formatDate(date)
+    tableData.innerText = formatDate(new Date(forecast.startTime))
     tableRow.appendChild(tableData)
 
     tableData = document.createElement("td")
@@ -122,8 +121,31 @@ function formatDate(date) {
   return `${weekdayNames[date.getDay()]}, ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
 }
 
+function formatTime(date) {
+  let hour = date.getHours()
+  let ampm = hour >= 12 ? "PM" : "AM"
+  hour %= 12
+  hour = hour === 0 ? 12 : hour
+  return `${hour}:${date.getMinutes()}${ampm}`
+}
+
 function showDetails(forecastIndex) {
-  console.log(forecastIndex)
+  let forecast = forecasts[forecastIndex]
+  document.getElementById("detail-date").innerText = formatDate(new Date(forecast.startTime))
+  document.getElementById("detail-status").innerText = weatherMapping[forecast.values.weatherCode].description
+  document.getElementById("detail-temp-high").innerText = forecast.values.temperatureMax
+  document.getElementById("detail-temp-low").innerText = forecast.values.temperatureMin
+  document.getElementById("detail-status-icon").setAttribute("src",
+    `/static/images/weather-symbols/${weatherMapping[forecast.values.weatherCode].iconName}`)
+  document.getElementById("detail-status-icon").setAttribute("alt",
+    "${weatherMapping[forecast.values.weatherCode].iconName}")
+  document.getElementById("detail-precipitation").innerText = precipitationMapping[forecast.values.precipitationType]
+  document.getElementById("detail-rain-chance").innerText = forecast.values.precipitationProbability
+  document.getElementById("detail-wind-speed").innerText = forecast.values.windSpeed
+  document.getElementById("detail-humidity").innerText = forecast.values.humidity
+  document.getElementById("detail-visibility").innerText = forecast.values.visibility
+  document.getElementById("detail-sunrise").innerText = formatTime(new Date(forecast.values.sunriseTime))
+  document.getElementById("detail-sunset").innerText = formatTime(new Date(forecast.values.sunsetTime))
 }
 
 const stateMapping = {
@@ -275,3 +297,11 @@ const weatherMapping = {
 }
 weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+precipitationMapping = {
+  0: "N/A",
+  1: "Rain",
+  2: "Snow",
+  3: "Freezing Rain",
+  4: "Ice Pellets"
+}
