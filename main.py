@@ -18,8 +18,14 @@ def hello_world():
 
 @app.get("/weather")
 def weather():
-    print(request.args["lat"])
-    print(request.args["lng"])
+    testing = True
+    if testing:
+        with open("current.json") as jsonFile:
+            currentResult = json.load(jsonFile)
+        with open("forecast.json") as jsonFile:
+            forecastResult = json.load(jsonFile)
+        return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult})
+
     headers = {
         "accept": "application/json",
         "Accept-Encoding": "gzip"
@@ -27,7 +33,7 @@ def weather():
 
     url = "https://api.tomorrow.io/v4/timelines?location=" + request.args["lat"] + ", " + request.args["lng"] + \
           "&fields=temperature&fields=windSpeed&fields=humidity&fields=pressureSeaLevel&fields=uvIndex&fields" \
-          "=weatherCode&fields=visibility&fields=cloudCover&fields=&units=metric&timesteps=current&timezone=America" \
+          "=weatherCode&fields=visibility&fields=cloudCover&fields=&units=imperial&timesteps=current&timezone=America" \
           "%2FLos_Angeles&apikey=0H4oNBZe7IJKfOGHp3AcaYRirN7aYsxS"
     response = requests.get(url, headers=headers)
     currentResult = json.JSONDecoder().decode(response.text)

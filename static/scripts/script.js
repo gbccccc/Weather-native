@@ -43,13 +43,26 @@ function submitAddress() {
 
 function handleWeatherStats(response, address) {
   let responseJson = JSON.parse(response)
-  displayCurrentWeather(responseJson.current)
+  displayCurrentWeather(responseJson.current, address)
   displayForecastWeather(responseJson.forecast)
   document.getElementById("result-section").style.display = "block"
 }
 
-function displayCurrentWeather(currentWeather) {
+function displayCurrentWeather(currentWeather, address) {
   console.log(currentWeather)
+  let weatherStats = currentWeather.data.timelines[0].intervals[0].values
+
+  document.getElementById("card-address").innerText = address
+  document.getElementById("card-weather-icon").setAttribute("src",
+    "/static/images/weather-symbols/" + weatherMapping[weatherStats.weatherCode].iconName)
+  document.getElementById("card-temperature").innerText = weatherStats.temperature
+  document.getElementById("card-weather").innerText = weatherMapping[weatherStats.weatherCode].description
+  document.getElementById("card-humidity").innerText = weatherStats.humidity
+  document.getElementById("card-pressure").innerText = weatherStats.pressureSeaLevel
+  document.getElementById("card-wind-speed").innerText = weatherStats.windSpeed
+  document.getElementById("card-visibility").innerText = weatherStats.visibility
+  document.getElementById("card-cloud-cover").innerText = weatherStats.cloudCover
+  document.getElementById("card-uv-level").innerText = weatherStats.uvIndex
 }
 
 function displayForecastWeather(forecastWeather) {
