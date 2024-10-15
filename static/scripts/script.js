@@ -198,7 +198,6 @@ function onClickChartsButton() {
 function displayCharts() {
   document.getElementById("weather-charts").style.display = "block"
   document.getElementById("display-charts-button").className = "showing-charts"
-
 }
 
 function hideCharts() {
