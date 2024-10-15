@@ -1,5 +1,6 @@
 window.onload = init
 
+const ipInfoKey = "63511c0996acf1"
 const googleApiKey = "AIzaSyAG1FPkDpKn_pC2Kr9-hgNzodkHb9hyY8E"
 
 let forecasts;
@@ -25,7 +26,19 @@ function noResult() {
 function submitAddress() {
   let autoDetection = document.getElementById("auto-detect").checked
   if (autoDetection) {
-
+    let xhrAutoDetect = new XMLHttpRequest()
+    xhrAutoDetect.open("GET", `https://ipinfo.io/?token=${ipInfoKey}`)
+    xhrAutoDetect.onload = (event) => {
+      let responseJson = JSON.parse(event.target.response)
+      let xhrTomorrow = new XMLHttpRequest();
+      locArray = responseJson.loc.split(",")
+      xhrTomorrow.open("GET", `/weather?lat=${parseInt(locArray[0])}&lng=${parseInt(locArray[1])}`);
+      xhrTomorrow.onload = (event) => {
+        handleWeatherStats(event.target.response, `${responseJson.city}, ${responseJson.region}, ${responseJson.country}`)
+      }
+      xhrTomorrow.send();
+    }
+    xhrAutoDetect.send()
   } else {
     let addressForm = document.getElementById("address-form")
     if (addressForm.reportValidity()) {
@@ -37,8 +50,8 @@ function submitAddress() {
       let addressStr = addressArray.join()
 
       let xhrGeocoding = new XMLHttpRequest()
-      xhrGeocoding.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address="
-        + addressStr + "&key=" + googleApiKey)
+      xhrGeocoding.open("GET",
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${addressStr}&key=${googleApiKey}`)
       xhrGeocoding.onload = (event) => {
         let responseJson = JSON.parse(event.target.response)
         if (responseJson.results.length === 0) {
@@ -62,6 +75,11 @@ function submitAddress() {
 function handleWeatherStats(response, address) {
   onClear()
   let responseJson = JSON.parse(response)
+  if (!(responseJson.current.data && responseJson.forecast.data)) {
+    noResult()
+    return
+  }
+
   displayCurrentWeather(responseJson.current, address)
   displayForecastWeather(responseJson.forecast)
   document.getElementById("result-section").style.display = "block"
@@ -87,7 +105,6 @@ function displayCurrentWeather(currentWeather, address) {
 
 
 function displayForecastWeather(forecastWeather) {
-  console.log(forecastWeather)
   forecasts = forecastWeather.data.timelines[0].intervals
 
   let resultTableBody = document.getElementById("result-table").children[0]
