@@ -2,6 +2,8 @@ window.onload = init
 
 const googleApiKey = "AIzaSyAG1FPkDpKn_pC2Kr9-hgNzodkHb9hyY8E"
 
+let forecasts;
+
 function init() {
   let stateSelection = document.getElementById("state")
   for (let stateAbbr in stateMapping) {
@@ -55,7 +57,8 @@ function displayCurrentWeather(currentWeather, address) {
   document.getElementById("card-address").innerText = address
   document.getElementById("card-weather-icon").setAttribute("src",
     "/static/images/weather-symbols/" + weatherMapping[weatherStats.weatherCode].iconName)
-  document.getElementById("card-weather-icon").setAttribute("alt", weatherMapping[weatherStats.weatherCode].iconName)
+  document.getElementById("card-weather-icon").setAttribute("alt",
+    weatherMapping[weatherStats.weatherCode].iconName)
   document.getElementById("card-temperature").innerText = weatherStats.temperature
   document.getElementById("card-weather").innerText = weatherMapping[weatherStats.weatherCode].description
   document.getElementById("card-humidity").innerText = weatherStats.humidity
@@ -68,8 +71,46 @@ function displayCurrentWeather(currentWeather, address) {
 
 function displayForecastWeather(forecastWeather) {
   console.log(forecastWeather)
-  // let forecastNum = forecastWeather.
-  // let resultTable = document.getElementById("result-table")
+  forecasts = forecastWeather.data.timelines[0].intervals
+
+  let resultTableBody = document.getElementById("result-table").children[0]
+  let tableChildren = resultTableBody.children
+  while (tableChildren.length > 1) {
+    tableChildren[1].remove()
+  }
+  
+  for (let forecast of forecasts) {
+    let tableRow = document.createElement("tr")
+
+    tableRow.setAttribute("class", "result-table-row")
+    let tableData = document.createElement("td")
+    tableData.innerText = forecast.startTime
+    tableRow.appendChild(tableData)
+
+    tableData = document.createElement("td")
+    let statusIcon = document.createElement("img")
+    statusIcon.setAttribute("class", "table-status-icon")
+    statusIcon.setAttribute("src",
+      "/static/images/weather-symbols/" + weatherMapping[forecast.values.weatherCode].iconName)
+    statusIcon.setAttribute("alt", weatherMapping[forecast.values.weatherCode].iconName)
+    tableData.appendChild(statusIcon)
+    tableData.append(weatherMapping[forecast.values.weatherCode].description)
+    tableRow.appendChild(tableData)
+
+    tableData = document.createElement("td")
+    tableData.innerText = forecast.values.temperatureMax
+    tableRow.appendChild(tableData)
+
+    tableData = document.createElement("td")
+    tableData.innerText = forecast.values.temperatureMin
+    tableRow.appendChild(tableData)
+
+    tableData = document.createElement("td")
+    tableData.innerText = forecast.values.windSpeed
+    tableRow.appendChild(tableData)
+
+    resultTableBody.append(tableRow)
+  }
 }
 
 const stateMapping = {

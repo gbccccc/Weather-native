@@ -181,7 +181,7 @@ body {
     height: 30px;
 }
 
-.result-table {
+#result-table {
     text-align: center;
     width: 1000px;
     margin: 20px auto;
