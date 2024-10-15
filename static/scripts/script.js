@@ -42,6 +42,7 @@ function submitAddress() {
 }
 
 function handleWeatherStats(response, address) {
+  document.getElementById("result-section").style.display = "none"
   let responseJson = JSON.parse(response)
   displayCurrentWeather(responseJson.current, address)
   displayForecastWeather(responseJson.forecast)
