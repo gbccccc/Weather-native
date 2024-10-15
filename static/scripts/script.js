@@ -163,6 +163,7 @@ function formatTime(date) {
 }
 
 function displayDetail(forecastIndex) {
+  document.getElementById("result-section").style.display = "none"
   document.getElementById("detail-section").style.display = "none"
 
   let forecast = forecasts[forecastIndex]
