@@ -50,12 +50,12 @@ function handleWeatherStats(response, address) {
 }
 
 function displayCurrentWeather(currentWeather, address) {
-  console.log(currentWeather)
   let weatherStats = currentWeather.data.timelines[0].intervals[0].values
 
   document.getElementById("card-address").innerText = address
   document.getElementById("card-weather-icon").setAttribute("src",
     "/static/images/weather-symbols/" + weatherMapping[weatherStats.weatherCode].iconName)
+  document.getElementById("card-weather-icon").setAttribute("alt", weatherMapping[weatherStats.weatherCode].iconName)
   document.getElementById("card-temperature").innerText = weatherStats.temperature
   document.getElementById("card-weather").innerText = weatherMapping[weatherStats.weatherCode].description
   document.getElementById("card-humidity").innerText = weatherStats.humidity
@@ -68,6 +68,8 @@ function displayCurrentWeather(currentWeather, address) {
 
 function displayForecastWeather(forecastWeather) {
   console.log(forecastWeather)
+  // let forecastNum = forecastWeather.
+  // let resultTable = document.getElementById("result-table")
 }
 
 const stateMapping = {
