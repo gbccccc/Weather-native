@@ -33,7 +33,7 @@ function submitAddress() {
         let responseJson = JSON.parse(event.target.response)
         let location = responseJson.results[0].geometry.location
         let xhrTomorrow = new XMLHttpRequest();
-        xhrTomorrow.open("GET", "/weather?lat=" + location.lat + "&lng=" + location.lng);
+        xhrTomorrow.open("GET", `/weather?lat=${location.lat}&lng=${location.lng}`);
         xhrTomorrow.onload = (event) =>
           handleWeatherStats(event.target.response, responseJson.results[0].formatted_address)
         xhrTomorrow.send();
@@ -56,7 +56,7 @@ function displayCurrentWeather(currentWeather, address) {
 
   document.getElementById("card-address").innerText = address
   document.getElementById("card-weather-icon").setAttribute("src",
-    "/static/images/weather-symbols/" + weatherMapping[weatherStats.weatherCode].iconName)
+    `/static/images/weather-symbols/${weatherMapping[weatherStats.weatherCode].iconName}`)
   document.getElementById("card-weather-icon").setAttribute("alt",
     weatherMapping[weatherStats.weatherCode].iconName)
   document.getElementById("card-temperature").innerText = weatherStats.temperature
@@ -69,6 +69,7 @@ function displayCurrentWeather(currentWeather, address) {
   document.getElementById("card-uv-level").innerText = weatherStats.uvIndex
 }
 
+
 function displayForecastWeather(forecastWeather) {
   console.log(forecastWeather)
   forecasts = forecastWeather.data.timelines[0].intervals
@@ -78,20 +79,21 @@ function displayForecastWeather(forecastWeather) {
   while (tableChildren.length > 1) {
     tableChildren[1].remove()
   }
-  
+
   for (let forecast of forecasts) {
     let tableRow = document.createElement("tr")
 
     tableRow.setAttribute("class", "result-table-row")
     let tableData = document.createElement("td")
-    tableData.innerText = forecast.startTime
+    let date = new Date(forecast.startTime)
+    tableData.innerText = formatDate(date)
     tableRow.appendChild(tableData)
 
     tableData = document.createElement("td")
     let statusIcon = document.createElement("img")
     statusIcon.setAttribute("class", "table-status-icon")
     statusIcon.setAttribute("src",
-      "/static/images/weather-symbols/" + weatherMapping[forecast.values.weatherCode].iconName)
+      `/static/images/weather-symbols/${weatherMapping[forecast.values.weatherCode].iconName}`)
     statusIcon.setAttribute("alt", weatherMapping[forecast.values.weatherCode].iconName)
     tableData.appendChild(statusIcon)
     tableData.append(weatherMapping[forecast.values.weatherCode].description)
@@ -111,6 +113,10 @@ function displayForecastWeather(forecastWeather) {
 
     resultTableBody.append(tableRow)
   }
+}
+
+function formatDate(date) {
+  return `${weekdayNames[date.getDay()]}, ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`
 }
 
 const stateMapping = {
@@ -260,3 +266,5 @@ const weatherMapping = {
     "iconName": "tstorm.svg"
   }
 }
+weekdayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
