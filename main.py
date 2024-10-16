@@ -19,7 +19,7 @@ def hello_world():
 @app.get("/weather")
 def weather():
     testing = True
-    # testing = False
+    testing = False
     if testing:
         with open("current.json") as jsonFile:
             currentResult = json.load(jsonFile)

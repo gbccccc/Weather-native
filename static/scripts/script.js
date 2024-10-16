@@ -465,7 +465,7 @@ function displayHourlyChart() {
       }, { // Air pressure
         allowDecimals: false,
         title: { // Title on top of axis
-          text: 'hPa',
+          text: 'inHg',
           offset: 0,
           align: 'high',
           rotation: 0,
@@ -529,7 +529,7 @@ function displayHourlyChart() {
         groupPadding: 0,
         pointPadding: 0,
         tooltip: {
-          valueSuffix: ' mm',
+          valueSuffix: '%',
           pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
             ' ' +
             '{series.name}: <b>{point.minvalue} mm - ' +
@@ -570,7 +570,7 @@ function displayHourlyChart() {
           }
         },
         tooltip: {
-          valueSuffix: ' mm'
+          valueSuffix: '%'
         }
       }, {
         name: 'Air pressure',
@@ -581,7 +581,7 @@ function displayHourlyChart() {
         },
         shadow: false,
         tooltip: {
-          valueSuffix: ' hPa'
+          valueSuffix: ' inHg'
         },
         dashStyle: 'shortdot',
         yAxis: 2
@@ -595,7 +595,7 @@ function displayHourlyChart() {
         vectorLength: 18,
         yOffset: -15,
         tooltip: {
-          valueSuffix: ' m/s'
+          valueSuffix: ' mph'
         }
       }]
     };
