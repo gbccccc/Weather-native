@@ -202,6 +202,7 @@ function displayCharts() {
 
   displayMinMaxTemperatureChart()
   displayHourlyChart()
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 function displayMinMaxTemperatureChart() {
