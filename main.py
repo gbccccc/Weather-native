@@ -25,7 +25,9 @@ def weather():
             currentResult = json.load(jsonFile)
         with open("forecast.json") as jsonFile:
             forecastResult = json.load(jsonFile)
-        return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult})
+        with open("hourly.json") as jsonFile:
+            hourlyResult = json.load(jsonFile)
+        return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult, "hourly": hourlyResult})
 
     headers = {
         "accept": "application/json",
@@ -48,7 +50,15 @@ def weather():
     response = requests.get(url, headers=headers)
     forecastResult = json.JSONDecoder().decode(response.text)
 
-    return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult})
+    url = "https://api.tomorrow.io/v4/timelines?location=" + request.args["lat"] + ", " + request.args["lng"] + \
+          "&fields=temperature&fields=windDirection&fields=windSpeed&fields=humidity" \
+          "&fields=weatherCode&fields=pressureSeaLevel&units=imperial&timesteps" \
+          "=1h&startTime=now&endTime=nowPlus5d&timezone=America%2FLos_Angeles&apikey" \
+          "=0H4oNBZe7IJKfOGHp3AcaYRirN7aYsxS"
+    response = requests.get(url, headers=headers)
+    hourlyResult = json.JSONDecoder().decode(response.text)
+
+    return json.JSONEncoder().encode({"current": currentResult, "forecast": forecastResult, "hourly": hourlyResult})
 
 
 if __name__ == "__main__":

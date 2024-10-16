@@ -315,4 +315,13 @@ body {
 #weather-charts {
     display: none;
     margin: 10px auto;
+    width: 1000px;
+}
+
+#min-max-temp-chart {
+    margin-top: 10px;
+}
+
+#hourly-chart {
+    margin-top: 10px;
 }
