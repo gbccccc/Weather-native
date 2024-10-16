@@ -198,6 +198,69 @@ function onClickChartsButton() {
 function displayCharts() {
   document.getElementById("weather-charts").style.display = "block"
   document.getElementById("display-charts-button").className = "showing-charts"
+
+  displayMinMaxTemperatureChart()
+}
+
+function displayMinMaxTemperatureChart() {
+  let data = []
+  for (forecast of forecasts) {
+    data.push([new Date(forecast.startTime).getTime(), forecast.values.temperatureMin, forecast.values.temperatureMax])
+  }
+
+  ;(async () => {
+    Highcharts.chart('min-max-temp-chart', {
+      chart: {
+        type: 'arearange',
+        zooming: {
+          type: 'x'
+        },
+        scrollablePlotArea: {
+          minWidth: 600,
+          scrollPositionX: 1
+        }
+      },
+      title: {
+        text: 'Temperature Ranges (Min, Max)'
+      },
+      xAxis: {
+        type: 'datetime',
+        accessibility: {
+          rangeDescription: 'Range: Jan 1st 2017 to Dec 31 2017.'
+        }
+      },
+      yAxis: {
+        title: {
+          text: null
+        }
+      },
+      tooltip: {
+        crosshairs: true,
+        shared: true,
+        valueSuffix: '°F',
+        xDateFormat: '%A, %b %e'
+      },
+      legend: {
+        enabled: false
+      },
+      series: [{
+        name: 'Temperatures',
+        data: data,
+        color: {
+          linearGradient: {
+            x1: 0,
+            x2: 0,
+            y1: 0,
+            y2: 1
+          },
+          stops: [
+            [0, '#ff5900'],
+            [1, '#03bafc']
+          ]
+        }
+      }]
+    });
+  })();
 }
 
 function hideCharts() {
